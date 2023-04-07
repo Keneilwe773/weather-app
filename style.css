@@ -3,7 +3,7 @@ body{
 }
 
 h1 {
-    padding-left: 30px;
+    padding-left: 15px;
     padding-top: 10px;
     margin: 0;
     padding-bottom: 0px;
@@ -15,6 +15,8 @@ h1 {
 
 #temperature {
     font-size: 100px;
+    position: relative;
+    left: -42px;
 }
 
 #celsius-link {
@@ -22,7 +24,7 @@ h1 {
     font-size: 30px;
     position: relative;
     top: -48px;
-    left: -20px;
+    left: -60px;
     color: black;
 }
 
@@ -35,7 +37,7 @@ h1 {
     font-size: 30px;
     position: relative;
     top: -48px;
-    left: -20px;
+    left: -60px;
     color: black;
 }
 
@@ -44,7 +46,7 @@ h1 {
 }
 
 .timeprecipitation {
-    padding-left: 40px;
+    padding-left: 30px;
     margin: 0;
     list-style: none;
     padding-top: 0px;
@@ -53,26 +55,20 @@ h1 {
 #city-search {
     position: absolute;
     top: 0;
-    left: 1050px;
+    left: 1132px;
     padding-top: 40px;
 }
 
 #city {
     position: absolute;
     top: 70px;
-    left: 1050px;
-}
-
-h3 {
-    position: absolute;
-    top: 104px;
-    left: 1050px;
+    left: 1132px;
 }
 
 .weather-properties {
     position: absolute;
-    top: 140px;
-    left: 1020px;
+    top: 104px;
+    left: 1100px;
     list-style: none;
 }
 
@@ -86,6 +82,18 @@ h3 {
 
 .col {
     padding-bottom: 20px;
+}
+
+.prop {
+    background-color: white;
+    border-radius: 20px;
+    text-align: center;
+    padding-top: 45px;
+}
+
+.prop:hover {
+    cursor: pointer;
+    background-color: rgb(205, 237, 253);
 }
 
 .day {
