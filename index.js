@@ -1,6 +1,5 @@
 let now = new Date();
 
-
 function formatTime(now) {
   let hours = now.getHours();  // searching for current hour.
   if (hours < 10) {
@@ -16,12 +15,6 @@ function formatTime(now) {
   return `${day} ${hours}:${minutes}`;
 }
 
-let dayTime = `${formatTime(now)}`;
-let link = document.querySelector("#dateTime");
-if (link) {
-  link.innerHTML = dayTime;
-}
-
 
 function showTemperature(response) {
   let descriptionElement = document.querySelector('#description');
@@ -29,8 +22,9 @@ function showTemperature(response) {
   let humidityElement = document.querySelector('#humidity');
   let windElement = document.querySelector('#wind');
   let iconElement = document.querySelector('#icon');
+  celsiusTemperature = Math.round(response.data.main.temp);
   // @ts-ignore
-  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  temperatureElement.innerHTML = celsiusTemperature;
   // @ts-ignore
   descriptionElement.innerHTML = response.data.weather[0].description;
   // @ts-ignore
@@ -42,6 +36,7 @@ function showTemperature(response) {
 
   console.log(response.data);
 }
+
 
 function city(event) {
   event.preventDefault();
@@ -60,32 +55,39 @@ function city(event) {
 }
 
 
-let form = document.querySelector("#city-search");
-// @ts-ignore
-form.addEventListener("submit", city);
-
-
-
 function convertToCelsius(event) {
   event.preventDefault();
-  let temperature = document.querySelector("#temperature");
+  let temperatureElement = document.querySelector("#temperature");
   // @ts-ignore
-  temperature.innerHTML = 24;
+  temperatureElement.innerHTML = celsiusTemperature;
 }
-
-let celsius = document.querySelector("#celsius-link");
-// @ts-ignore
-celsius.addEventListener("click", convertToCelsius);
 
 
 function convertToFahrenheit(event) {
   event.preventDefault();
-  let temperature = document.querySelector("#temperature");
+  let temperatureElement = document.querySelector("#temperature");
   // @ts-ignore
-  temperature.innerHTML = 75.2;
+  let fahrenheitTemperature = (celsiusTemperature *9)/5 + 32;
+  // @ts-ignore
+  temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
-let fahrenheit = document.querySelector("#fahrenheit-link");
-// @ts-ignore
-fahrenheit.addEventListener("click", convertToFahrenheit);
+let dayTime = `${formatTime(now)}`;
+let link = document.querySelector("#dateTime");
+if (link) {
+  link.innerHTML = dayTime;
+}
 
+let form = document.querySelector("#city-search");
+// @ts-ignore
+form.addEventListener("submit", city);
+
+let celsiusLink = document.querySelector("#celsius-link");
+// @ts-ignore
+celsiusLink.addEventListener("click", convertToCelsius);
+
+let celsiusTemperature = null;
+
+let fahrenheitLink = document.querySelector("#fahrenheit-link");
+// @ts-ignore
+fahrenheitLink.addEventListener("click", convertToFahrenheit);
