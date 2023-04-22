@@ -1,16 +1,15 @@
 let now = new Date();
 
+
 function formatTime(now) {
   let hours = now.getHours();  // searching for current hour.
   if (hours < 10) {
     hours = `0${hours}`;
   }
-
   let minutes = now.getMinutes();  // searching for current minutes.
   if (minutes < 10) {
     minutes = `0${minutes}`;
   }
-
   let days = ["Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday"];  // searching for current day.
   let day = days[now.getDay()];
 
@@ -23,13 +22,25 @@ if (link) {
   link.innerHTML = dayTime;
 }
 
-function showTemperature(response) {
-  let temp = Math.round(response.data.main.temp);  // searching for current temperature
-  let currentTemp = document.querySelector("#temperature");
-  // @ts-ignore
-  currentTemp.innerHTML = temp;
 
-  console.log(temp);
+function showTemperature(response) {
+  let descriptionElement = document.querySelector('#description');
+  let temperatureElement = document.querySelector("#temperature");
+  let humidityElement = document.querySelector('#humidity');
+  let windElement = document.querySelector('#wind');
+  let iconElement = document.querySelector('#icon');
+  // @ts-ignore
+  temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  // @ts-ignore
+  descriptionElement.innerHTML = response.data.weather[0].description;
+  // @ts-ignore
+  humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
+  // @ts-ignore
+  windElement.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
+  // @ts-ignore
+  iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
+
+  console.log(response.data);
 }
 
 function city(event) {
@@ -48,11 +59,13 @@ function city(event) {
   axios.get(apiUrl).then(showTemperature);
 }
 
+
 let form = document.querySelector("#city-search");
 // @ts-ignore
 form.addEventListener("submit", city);
 
-// converting temperature to Celsius
+
+
 function convertToCelsius(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temperature");
@@ -64,7 +77,7 @@ let celsius = document.querySelector("#celsius-link");
 // @ts-ignore
 celsius.addEventListener("click", convertToCelsius);
 
-// convert temperature to Fahrenheit
+
 function convertToFahrenheit(event) {
   event.preventDefault();
   let temperature = document.querySelector("#temperature");
