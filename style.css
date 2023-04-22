@@ -4,14 +4,7 @@
     padding: 20px 20px;
     background-color: rgb(116, 201, 238) !important;
     border-radius: 30px;
-    border-style: solid;
-}
-
-h1 {
-    padding-left: 0px;
-    padding-top: 10px;
-    margin: 0;
-    padding-bottom: 0px;
+    border: 1px solid black;
 }
 
 #prep {
@@ -88,7 +81,6 @@ h1 {
     padding: 0px;
     column-gap: 2px;
     font-size: 12px;
-    overflow: auto;
 }
 
 .col {
