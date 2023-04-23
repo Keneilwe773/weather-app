@@ -72,6 +72,36 @@ function convertToFahrenheit(event) {
   temperatureElement.innerHTML = Math.round(fahrenheitTemperature);
 }
 
+
+function forecast() {
+  let forecastElement = document.querySelector("#forecast");
+  let days = ["Sun","Mon", "Tue", "Wed", "Thur", "Fri", "Sat"];
+  let forecastHTML = `<div class="row">`;
+  days.forEach(function(day) {
+    forecastHTML = forecastHTML + `
+      <div class="col properties">
+        <div class="col temperatures">
+          <span class="maximum">
+          26°
+          </span>
+          <span class="minimum">
+            18°
+          </span>
+        </div>
+        <div class="col">
+          <img src="https://openweathermap.org/img/wn/10d@2x.png" id="icons" />
+        </div>
+        <div class="col day">
+          ${day}
+        </div>
+      </div>`;
+  });
+  forecastHTML = forecastHTML + `</div>`
+  // @ts-ignore
+  forecastElement.innerHTML = forecastHTML;
+  console.log(forecastHTML);
+}
+
 let dayTime = `${formatTime(now)}`;
 let link = document.querySelector("#dateTime");
 if (link) {
@@ -91,3 +121,5 @@ let celsiusTemperature = null;
 let fahrenheitLink = document.querySelector("#fahrenheit-link");
 // @ts-ignore
 fahrenheitLink.addEventListener("click", convertToFahrenheit);
+
+forecast();

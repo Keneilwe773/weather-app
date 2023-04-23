@@ -90,7 +90,12 @@
     padding-bottom: 20px;
 }
 
-.prop {
+#icons {
+    padding: 0px;
+    width: 50px;
+}
+
+.properties {
     background-color: white;
     border-radius: 20px;
     text-align: center;
