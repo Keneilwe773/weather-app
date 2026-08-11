@@ -1,105 +1,134 @@
 .weather-app {
     max-width: 550px;
     margin: 30px auto;
-    padding: 20px 20px;
-    background-color: rgb(116, 201, 238) !important;
+    padding: 20px;
+    background-color: rgb(116, 201, 238);
     border-radius: 30px;
     border: 1px solid black;
 }
 
+.weather-app h1 {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 0.75rem;
+    justify-content: center;
+}
+
 #icon {
-    font-size: 50px;
+    width: 70px;
+    height: 70px;
 }
 
 #temperature {
     font-size: 50px;
-    position: relative;
-    left: -20px;
-    top: 2px;
+    margin: 0;
 }
 
-#celsius-link {
-    text-decoration: none;
-    font-size: 25px;
-    position: relative;
-    top: -14px;
-    left: -32px;
-    color: black;
-}
-
-#celsius-link:hover {
-    color: blue;
-}
-
+#celsius-link,
 #fahrenheit-link {
     text-decoration: none;
-    font-size: 25px;
-    position: relative;
-    top: -14px;
-    left: -32px;
+    font-size: 21px;
     color: black;
 }
 
+#celsius-link:hover,
 #fahrenheit-link:hover {
     color: blue;
 }
 
 .dateDescription {
-    position: relative;
-    top: -30px;
-    font-size: 12px;
+    margin: 0 0 1rem;
+    padding: 0;
+    font-size: 14px;
     list-style: none;
+    text-align: center;
 }
 
 #description {
-    text-transform : capitalize;
+    text-transform: capitalize;
 }
 
 #city-search {
-    position: relative;
-    top: -130px;
-    left: 300px;
-    padding-top: 0px;
-    font-size: 13px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+#city-search input[type="search"] {
+    flex: 1 1 180px;
+    min-width: 180px;
+    padding: 0.5rem;
+    border: 1px solid #999;
+    border-radius: 8px;
+}
+
+#city-search input[type="submit"] {
+    padding: 0.55rem 1rem;
+    border: none;
+    border-radius: 8px;
+    background-color: #0d6efd;
+    color: white;
+    cursor: pointer;
+}
+
+#city-search input[type="submit"]:hover {
+    background-color: #084298;
 }
 
 #city {
-    position: relative;
-    top: -130px;
-    left: 300px;
+    margin: 0 0 1rem;
+    font-size: 1.25rem;
+    text-align: center;
 }
 
 .weather-properties {
-    position: relative;
-    top: -140px;
-    left: 270px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    padding: 0;
     list-style: none;
-    font-size: 12px;
+    font-size: 14px;
+    margin-bottom: 1rem;
+    justify-content: center;
+}
+
+.weather-properties li {
+    flex: 1 1 calc(33% - 0.67rem);
+    min-width: 120px;
+    background: rgba(255,255,255,0.9);
+    border-radius: 12px;
+    padding: 0.8rem;
+    text-align: center;
 }
 
 .row {
-    position: relative;
-    top: -50px;
-    left: 0;
-    padding: 0px;
-    column-gap: 2px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    padding: 0;
     font-size: 12px;
+    justify-content: center;
 }
 
 .col {
-    padding-bottom: 20px;
+    flex: 1 1 calc(33% - 0.67rem);
+    min-width: 100px;
 }
 
 #icons {
-    padding: 0px;
     width: 50px;
+    height: auto;
 }
 
 .properties {
     background-color: white;
     border-radius: 20px;
     text-align: center;
-    padding-top: 45px;
+    padding: 1rem 0.5rem;
 }
 
 .prop:hover {
@@ -112,11 +141,54 @@
 }
 
 .source-code-main {
-    position: relative;
-    top: -20px;
+    margin-top: 1rem;
 }
 
 .source-code {
-    text-align:center;
+    text-align: center;
     font-size: 12px;
+}
+
+@media (max-width: 768px) {
+    .weather-app {
+        margin: 15px;
+        padding: 16px;
+    }
+
+    #temperature {
+        font-size: 40px;
+    }
+
+    #celsius-link,
+    #fahrenheit-link {
+        font-size: 18px;
+    }
+
+    .weather-properties li,
+    .col {
+        flex: 1 1 100%;
+    }
+
+    .properties {
+        padding-top: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .weather-app h1 {
+        gap: 6px;
+    }
+
+    .weather-app {
+        border-radius: 20px;
+    }
+
+    #city-search input[type="search"] {
+        min-width: 140px;
+    }
+
+    #celsius-link,
+    #fahrenheit-link {
+        font-size: 16px;
+    }
 }
