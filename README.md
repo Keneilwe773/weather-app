@@ -14,7 +14,6 @@ A simple weather dashboard built with HTML, CSS, and JavaScript.
 
 - Search weather by city
 - Display temperature, humidity, wind speed, and description
-- Show 7-day forecast cards
 - Toggle temperature display between Celsius and Fahrenheit
 
 ## How to run
