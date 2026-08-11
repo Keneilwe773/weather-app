@@ -68,6 +68,7 @@ function showTemperature(response) {
   let temperatureElement = document.querySelector("#temperature");
   let humidityElement = document.querySelector('#humidity');
   let windElement = document.querySelector('#wind');
+  let precipitationElement = document.querySelector('#precipitation');
   let iconElement = document.querySelector('#icon');
   celsiusTemperature = Math.round(response.data.main.temp);
   // @ts-ignore
@@ -78,6 +79,22 @@ function showTemperature(response) {
   humidityElement.innerHTML = `Humidity: ${response.data.main.humidity}%`;
   // @ts-ignore
   windElement.innerHTML = `Wind: ${Math.round(response.data.wind.speed)} km/h`;
+
+  let precipitation = 'Precipitation: 0 mm';
+  if (response.data.rain && response.data.rain['1h'] != null) {
+    precipitation = `Precipitation: ${response.data.rain['1h']} mm`;
+  } else if (response.data.rain && response.data.rain['3h'] != null) {
+    precipitation = `Precipitation: ${response.data.rain['3h']} mm`;
+  } else if (response.data.snow && response.data.snow['1h'] != null) {
+    precipitation = `Snow: ${response.data.snow['1h']} mm`;
+  } else if (response.data.snow && response.data.snow['3h'] != null) {
+    precipitation = `Snow: ${response.data.snow['3h']} mm`;
+  }
+  if (precipitationElement) {
+    // @ts-ignore
+    precipitationElement.innerHTML = precipitation;
+  }
+
   // @ts-ignore
   iconElement.setAttribute("src", `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`);
 
