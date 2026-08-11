@@ -2,6 +2,8 @@
 
 A simple weather dashboard built with HTML, CSS, and JavaScript.
 
+[Weather App](https://zingy-syrniki-4dbd95.netlify.app/)
+
 ## Project structure
 
 - `index.html` - main application markup
